@@ -11,7 +11,7 @@ import SocialsList from '@/shared/SocialsList';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
 import SwitchDarkMode from '@/shared/SwitchDarkMode';
 import Link from 'next/link';
-import LangDropdown from '@/app/(client-components)/(Header)/LangDropdown';
+// import LangDropdown from '@/app/(client-components)/(Header)/LangDropdown';
 
 export interface NavMobileProps {
 	data?: NavItemType[];
@@ -138,7 +138,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
 			<ul className="flex flex-col py-6 px-2 space-y-1">
 				{data.map(_renderItem)}
 			</ul>
-			<div className="flex items-center justify-between py-6 px-5">
+			{/* <div className="flex items-center justify-between py-6 px-5">
 				<a
 					className="inline-block"
 					href="https://themeforest.net/item/chisfis-online-booking-nextjs-template/43399526"
@@ -152,7 +152,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
 					className="flex"
 					panelClassName="z-10 w-screen max-w-[280px] px-4 mb-3 right-3 bottom-full sm:px-0"
 				/>
-			</div>
+			</div> */}
 		</div>
 	);
 };

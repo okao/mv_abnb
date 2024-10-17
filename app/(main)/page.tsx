@@ -4,8 +4,14 @@ import { TaxonomyType } from '@/data/types';
 import BgGlassmorphism from '@/components/BgGlassmorphism';
 import SectionHero from '@/app/(server-components)/SectionHero';
 import SectionSliderNewCategories from '@/components/SectionSliderNewCategories';
-import SectionOurFeatures from '@/components/SectionOurFeatures';
+// import SectionOurFeatures from '@/components/SectionOurFeatures';
 import SectionGridFeaturePlaces from '@/components/SectionGridFeaturePlaces';
+import SectionHowItWork from '@/components/SectionHowItWork';
+import BackgroundSection from '@/components/BackgroundSection';
+// import SectionSubscribe2 from '@/components/SectionSubscribe2';
+// import SectionGridAuthorBox from '@/components/SectionGridAuthorBox';
+import SectionGridCategoryBox from '@/components/SectionGridCategoryBox';
+// import SectionBecomeAnAuthor from '@/components/SectionBecomeAnAuthor';
 
 export const metadata: Metadata = {
 	title: 'Home',
@@ -157,9 +163,44 @@ export default async function Home() {
 				{/* SECTION 1 */}
 				<SectionSliderNewCategories categories={DEMO_CATS} />
 
-				<SectionOurFeatures />
+				{/* <SectionOurFeatures /> */}
 
 				<SectionGridFeaturePlaces cardType="card2" />
+
+				<SectionHowItWork />
+
+				<div className="relative py-16">
+					<BackgroundSection className="bg-orange-50 dark:bg-black/20" />
+					<SectionSliderNewCategories
+						categories={DEMO_CATS_2}
+						categoryCardType="card4"
+						itemPerRow={4}
+						heading="Suggestions for discovery"
+						subHeading="Popular places to stay that Chisfis recommends for you"
+						sliderStyle="style2"
+					/>
+				</div>
+
+				{/* <SectionSubscribe2 /> */}
+
+				{/* <div className="relative py-16">
+					<BackgroundSection className="bg-orange-50 dark:bg-black dark:bg-opacity-20 " />
+					<SectionGridAuthorBox />
+				</div> */}
+
+				<SectionGridCategoryBox />
+
+				{/* <div className="relative py-16">
+					<BackgroundSection />
+					<SectionBecomeAnAuthor />
+				</div> */}
+
+				<SectionSliderNewCategories
+					heading="Explore by types of stays"
+					subHeading="Explore houses based on 10 types of stays"
+					categoryCardType="card5"
+					itemPerRow={5}
+				/>
 			</div>
 		</main>
 	);

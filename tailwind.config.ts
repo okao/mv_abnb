@@ -24,9 +24,16 @@ const config = {
 	darkMode: ['class'],
 	content: [
 		'./pages/**/*.{ts,tsx}',
+		'./components/**/**/**/*.{ts,tsx}',
+		'./components/**/**/*.{ts,tsx}',
 		'./components/**/*.{ts,tsx}',
+		'./components/*.{ts,tsx}',
 		'./app/**/*.{ts,tsx}',
+		'./app/**/**/*.{ts,tsx}',
+		'./app/**/**/**/*.{ts,tsx}',
 		'./src/**/*.{ts,tsx}',
+		'./shared/**/*.{ts,tsx}',
+		'./shared/*.{ts,tsx}',
 	],
 	prefix: '',
 	theme: {
@@ -49,6 +56,8 @@ const config = {
 				// 	foreground: 'hsl(var(--primary-foreground))',
 				// },
 				primary: {
+					DEFAULT: 'hsl(var(--primary))',
+					foreground: 'hsl(var(--primary-foreground))',
 					50: customColors('--c-primary-50')({
 						opacityVariable: '',
 						opacityValue: undefined,
@@ -95,6 +104,8 @@ const config = {
 				// 	foreground: 'hsl(var(--secondary-foreground))',
 				// },
 				secondary: {
+					DEFAULT: 'hsl(var(--secondary))',
+					foreground: 'hsl(var(--secondary-foreground))',
 					50: customColors('--c-secondary-50')({
 						opacityVariable: '',
 						opacityValue: undefined,
