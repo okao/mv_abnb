@@ -471,7 +471,7 @@ const ListingExperiencesDetailPage: FC<
 							src={PHOTOS[0]}
 							sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
 						/>
-						<div className="absolute inset-0 bg-neutral-900 bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity"></div>
+						<div className="absolute inset-0 bg-gray-900 bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity"></div>
 					</div>
 					{PHOTOS.filter((_, i) => i >= 1 && i < 4).map(
 						(item, index) => (
@@ -493,7 +493,7 @@ const ListingExperiencesDetailPage: FC<
 
 								{/* OVERLAY */}
 								<div
-									className="absolute inset-0 bg-neutral-900 bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity cursor-pointer"
+									className="absolute inset-0 bg-gray-900 bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity cursor-pointer"
 									onClick={handleOpenModalImageGallery}
 								/>
 							</div>
@@ -501,7 +501,7 @@ const ListingExperiencesDetailPage: FC<
 					)}
 
 					<div
-						className="absolute hidden md:flex md:items-center md:justify-center left-3 bottom-3 px-4 py-2 rounded-xl bg-neutral-100 text-neutral-500 cursor-pointer hover:bg-neutral-200 z-10"
+						className="absolute hidden md:flex md:items-center md:justify-center left-3 bottom-3 px-4 py-2 rounded-xl bg-gray-100 text-neutral-500 cursor-pointer hover:bg-gray-200 z-10"
 						onClick={handleOpenModalImageGallery}
 					>
 						<Squares2X2Icon className="h-5 w-5" />

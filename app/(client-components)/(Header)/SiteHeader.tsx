@@ -144,7 +144,7 @@ const SiteHeader = () => {
 						{({ open }) => (
 							<>
 								{/* <Popover.Button
-									className={`p-2.5 bg-white hover:bg-neutral-100 dark:bg-primary-6000 dark:hover:bg-primary-700 rounded-xl shadow-xl border border-neutral-200 dark:border-primary-6000 z-10 focus:outline-none ${
+									className={`p-2.5 bg-white hover:bg-gray-100 dark:bg-primary-6000 dark:hover:bg-primary-700 rounded-xl shadow-xl border border-neutral-200 dark:border-primary-6000 z-10 focus:outline-none ${
 										open ? ' focus:ring-2 ring-primary-500' : ''
 									}`}
 								>
@@ -160,7 +160,7 @@ const SiteHeader = () => {
 									leaveTo="opacity-0 translate-y-1"
 								>
 									<Popover.Panel className="absolute right-0 z-10 mt-3 w-screen max-w-sm">
-										<div className="rounded-2xl bg-white dark:bg-neutral-800 overflow-hidden nc-custom-shadow-1">
+										<div className="rounded-2xl bg-white dark:bg-gray-800 overflow-hidden nc-custom-shadow-1">
 											<div className="relative p-6">
 												<span className="text-xl font-semibold">
 													Customize

@@ -38,7 +38,7 @@ const ModalReserveMobile: FC<ModalReserveMobileProps> = ({
 					className="HeroSearchFormMobile__Dialog relative z-50"
 					onClose={closeModal}
 				>
-					<div className="fixed inset-0 bg-neutral-100 dark:bg-neutral-900">
+					<div className="fixed inset-0 bg-gray-100 dark:bg-gray-900">
 						<div className="flex h-full">
 							<Transition.Child
 								as={Fragment}
@@ -61,7 +61,7 @@ const ModalReserveMobile: FC<ModalReserveMobileProps> = ({
 										</div>
 
 										<div className="flex-1 pt-12 py-1 flex flex-col ">
-											<div className="flex-1 bg-white dark:bg-neutral-900">
+											<div className="flex-1 bg-white dark:bg-gray-900">
 												<CheckOutPagePageMain />
 											</div>
 										</div>

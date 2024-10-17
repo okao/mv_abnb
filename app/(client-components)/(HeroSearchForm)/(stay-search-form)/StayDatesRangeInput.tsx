@@ -79,7 +79,7 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 					</Popover.Button>
 
 					{open && (
-						<div className="h-8 absolute self-center top-1/2 -translate-y-1/2 z-0 -inset-x-0.5 bg-white dark:bg-neutral-800"></div>
+						<div className="h-8 absolute self-center top-1/2 -translate-y-1/2 z-0 -inset-x-0.5 bg-white dark:bg-gray-800"></div>
 					)}
 
 					<Transition
@@ -92,7 +92,7 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 						leaveTo="opacity-0 translate-y-1"
 					>
 						<Popover.Panel className="absolute left-1/2 z-10 mt-3 top-full w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
-							<div className="overflow-hidden rounded-3xl shadow-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-neutral-800 p-8">
+							<div className="overflow-hidden rounded-3xl shadow-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-gray-800 p-8">
 								<DatePicker
 									selected={startDate}
 									onChange={onChangeDate}

@@ -31,7 +31,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
 							href={{
 								pathname: i.href || undefined,
 							}}
-							className="flex px-4 text-neutral-900 dark:text-neutral-200 text-sm font-medium rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 mt-0.5"
+							className="flex px-4 text-neutral-900 dark:text-neutral-200 text-sm font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 mt-0.5"
 						>
 							<span
 								className={`py-2.5 pr-3 ${
@@ -76,7 +76,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
 				className="text-neutral-900 dark:text-white"
 			>
 				<Link
-					className="flex w-full px-4 font-medium uppercase tracking-wide text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg"
+					className="flex w-full px-4 font-medium uppercase tracking-wide text-sm hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg"
 					href={{
 						pathname: item.href || undefined,
 					}}
@@ -115,7 +115,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
 	};
 
 	return (
-		<div className="overflow-y-auto w-full h-screen py-2 transition transform shadow-lg ring-1 dark:ring-neutral-700 bg-white dark:bg-neutral-900 divide-y-2 divide-neutral-100 dark:divide-neutral-800">
+		<div className="overflow-y-auto w-full h-screen py-2 transition transform shadow-lg ring-1 dark:ring-neutral-700 bg-white dark:bg-gray-900 divide-y-2 divide-neutral-100 dark:divide-neutral-800">
 			<div className="py-6 px-5">
 				<Logo />
 				<div className="flex flex-col mt-5 text-neutral-700 dark:text-neutral-300 text-sm">
@@ -125,9 +125,9 @@ const NavMobile: React.FC<NavMobileProps> = ({
 					</span>
 
 					<div className="flex justify-between items-center mt-4">
-						<SocialsList itemClass="w-9 h-9 flex items-center justify-center rounded-full bg-neutral-100 text-xl dark:bg-neutral-800 dark:text-neutral-300" />
+						<SocialsList itemClass="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-xl dark:bg-gray-800 dark:text-neutral-300" />
 						<span className="block">
-							<SwitchDarkMode className="bg-neutral-100 dark:bg-neutral-800" />
+							<SwitchDarkMode className="bg-gray-100 dark:bg-gray-800" />
 						</span>
 					</div>
 				</div>

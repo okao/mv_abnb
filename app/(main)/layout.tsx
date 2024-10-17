@@ -35,7 +35,7 @@ export default async function DashboardLayout({
 		<div
 			className={cn(
 				poppins.className,
-				'bg-white text-base dark:bg-neutral-900 text-neutral-900 dark:text-neutral-200'
+				'bg-white text-base dark:bg-gray-900 text-neutral-900 dark:text-neutral-200'
 			)}
 			lang="en"
 		>

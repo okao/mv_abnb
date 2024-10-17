@@ -86,7 +86,7 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 						leaveTo="opacity-0 translate-y-1"
 					>
 						<Popover.Panel className="absolute left-auto xl:-right-10 right-0 z-10 mt-3 top-full w-screen max-w-sm px-4 sm:px-0 lg:max-w-3xl">
-							<div className="overflow-hidden rounded-3xl shadow-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-neutral-800 p-8">
+							<div className="overflow-hidden rounded-3xl shadow-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-gray-800 p-8">
 								<DatePicker
 									selected={startDate}
 									onChange={onChangeDate}

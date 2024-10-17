@@ -31,7 +31,7 @@
 //
 
 .nc-SectionClientSay .glide__bullet--active {
-  @apply bg-neutral-700;
+  @apply bg-gray-700;
 }
 .nc-GallerySlider .glide__bullet--active {
   @apply bg-white w-2 h-2;
@@ -55,15 +55,15 @@
 
 //
 .nc-box-has-hover {
-  @apply bg-white rounded-3xl border border-neutral-200 border-opacity-70 hover:bg-neutral-50 hover:shadow-lg hover:border-transparent transition-shadow;
+  @apply bg-white rounded-3xl border border-neutral-200 border-opacity-70 hover:bg-gray-50 hover:shadow-lg hover:border-transparent transition-shadow;
 }
 
 .nc-dark-box-bg-has-hover {
-  @apply dark:bg-neutral-800 dark:bg-opacity-30  dark:border dark:border-neutral-700 dark:hover:bg-neutral-800 dark:hover:shadow-2xl;
+  @apply dark:bg-gray-800 dark:bg-opacity-30  dark:border dark:border-neutral-700 dark:hover:bg-gray-800 dark:hover:shadow-2xl;
 }
 
 .nc-dark-box-bg {
-  @apply dark:bg-neutral-800 dark:bg-opacity-30  dark:border dark:border-neutral-700 dark:shadow-2xl;
+  @apply dark:bg-gray-800 dark:bg-opacity-30  dark:border dark:border-neutral-700 dark:shadow-2xl;
 }
 
 //
@@ -104,7 +104,7 @@
 
   .DateRangePickerInput_clearDates,
   .SingleDatePickerInput_clearDate {
-    @apply rounded-full bg-neutral-200 dark:bg-white/10;
+    @apply rounded-full bg-gray-200 dark:bg-white/10;
     svg {
       @apply w-2 fill-neutral-700 dark:fill-neutral-300;
     }
@@ -202,7 +202,7 @@
 
 //
 input[type="time"]::-webkit-calendar-picker-indicator {
-  @apply dark:bg-neutral-500 rounded-md;
+  @apply dark:bg-gray-500 rounded-md;
 }
 
 [type="button"] {

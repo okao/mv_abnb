@@ -208,7 +208,7 @@ const ListingStayDetailPage: FC<
 							leaveFrom="opacity-100"
 							leaveTo="opacity-0"
 						>
-							{/* <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-40" /> */}
+							<Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-40" />
 							<div className="fixed inset-0 bg-black bg-opacity-40" />
 						</Transition.Child>
 
@@ -229,7 +229,7 @@ const ListingStayDetailPage: FC<
 							leaveTo="opacity-0 scale-95"
 						>
 							<div className="inline-block py-8 h-screen w-full max-w-4xl">
-								<div className="inline-flex pb-2 flex-col w-full text-left align-middle transition-all transform overflow-hidden rounded-2xl bg-white dark:bg-neutral-900 dark:border dark:border-neutral-700 dark:text-neutral-100 shadow-xl h-full">
+								<div className="inline-flex pb-2 flex-col w-full text-left align-middle transition-all transform overflow-hidden rounded-2xl bg-white dark:bg-gray-900 dark:border dark:border-neutral-700 dark:text-neutral-100 shadow-xl h-full">
 									<div className="relative flex-shrink-0 px-6 py-4 border-b border-neutral-200 dark:border-neutral-800 text-center">
 										<h3
 											className="text-lg font-medium leading-6 text-gray-900"
@@ -279,7 +279,7 @@ const ListingStayDetailPage: FC<
 				{/* CONTENT */}
 				<div className="flow-root">
 					<div className="text-sm sm:text-base text-neutral-6000 dark:text-neutral-300 -mb-4">
-						<div className="p-4 bg-neutral-100 dark:bg-neutral-800 flex justify-between items-center space-x-4 rounded-lg">
+						<div className="p-4 bg-gray-100 dark:bg-gray-800 flex justify-between items-center space-x-4 rounded-lg">
 							<span>Monday - Thursday</span>
 							<span>$199</span>
 						</div>
@@ -287,7 +287,7 @@ const ListingStayDetailPage: FC<
 							<span>Monday - Thursday</span>
 							<span>$199</span>
 						</div>
-						<div className="p-4 bg-neutral-100 dark:bg-neutral-800 flex justify-between items-center space-x-4 rounded-lg">
+						<div className="p-4 bg-gray-100 dark:bg-gray-800 flex justify-between items-center space-x-4 rounded-lg">
 							<span>Friday - Sunday</span>
 							<span>$219</span>
 						</div>
@@ -295,7 +295,7 @@ const ListingStayDetailPage: FC<
 							<span>Rent by month</span>
 							<span>-8.34 %</span>
 						</div>
-						<div className="p-4 bg-neutral-100 dark:bg-neutral-800 flex justify-between items-center space-x-4 rounded-lg">
+						<div className="p-4 bg-gray-100 dark:bg-gray-800 flex justify-between items-center space-x-4 rounded-lg">
 							<span>Minimum number of nights</span>
 							<span>1 night</span>
 						</div>
@@ -512,7 +512,7 @@ const ListingStayDetailPage: FC<
 				<div>
 					<h4 className="text-lg font-semibold">Check-in time</h4>
 					<div className="mt-3 text-neutral-500 dark:text-neutral-400 max-w-md text-sm sm:text-base">
-						<div className="flex space-x-10 justify-between p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
+						<div className="flex space-x-10 justify-between p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
 							<span>Check-in</span>
 							<span>08:00 am - 12:00 am</span>
 						</div>
@@ -602,7 +602,7 @@ const ListingStayDetailPage: FC<
 							alt=""
 							sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
 						/>
-						<div className="absolute inset-0 bg-neutral-900 bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity"></div>
+						<div className="absolute inset-0 bg-gray-900 bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity"></div>
 					</div>
 					{PHOTOS.filter((_, i) => i >= 1 && i < 5).map(
 						(item, index) => (
@@ -624,7 +624,7 @@ const ListingStayDetailPage: FC<
 
 								{/* OVERLAY */}
 								<div
-									className="absolute inset-0 bg-neutral-900 bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity cursor-pointer"
+									className="absolute inset-0 bg-gray-900 bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity cursor-pointer"
 									onClick={handleOpenModalImageGallery}
 								/>
 							</div>
@@ -632,7 +632,7 @@ const ListingStayDetailPage: FC<
 					)}
 
 					<button
-						className="absolute hidden md:flex md:items-center md:justify-center left-3 bottom-3 px-4 py-2 rounded-xl bg-neutral-100 text-neutral-500 hover:bg-neutral-200 z-10"
+						className="absolute hidden md:flex md:items-center md:justify-center left-3 bottom-3 px-4 py-2 rounded-xl bg-gray-100 text-neutral-500 hover:bg-gray-200 z-10"
 						onClick={handleOpenModalImageGallery}
 					>
 						<Squares2X2Icon className="w-5 h-5" />

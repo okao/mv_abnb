@@ -57,7 +57,7 @@ const ModalSelectDate: FC<ModalSelectDateProps> = ({
 					className="HeroSearchFormMobile__Dialog relative z-50"
 					onClose={closeModal}
 				>
-					<div className="fixed inset-0 bg-neutral-100 dark:bg-neutral-900">
+					<div className="fixed inset-0 bg-gray-100 dark:bg-gray-900">
 						<div className="flex h-full">
 							<Transition.Child
 								as={Fragment}
@@ -80,7 +80,7 @@ const ModalSelectDate: FC<ModalSelectDateProps> = ({
 										</div>
 
 										<div className="flex-1 pt-12 p-1 flex flex-col overflow-auto">
-											<div className="flex-1 flex flex-col bg-white dark:bg-neutral-800">
+											<div className="flex-1 flex flex-col bg-white dark:bg-gray-800">
 												<div className="flex-1 flex flex-col transition-opacity animate-[myblur_0.4s_ease-in-out] overflow-auto">
 													<div className="p-5 ">
 														<span className="block font-semibold text-xl sm:text-2xl">
@@ -115,7 +115,7 @@ const ModalSelectDate: FC<ModalSelectDateProps> = ({
 												</div>
 											</div>
 										</div>
-										<div className="px-4 py-3 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-700 flex justify-between">
+										<div className="px-4 py-3 bg-white dark:bg-gray-900 border-t border-neutral-200 dark:border-neutral-700 flex justify-between">
 											<button
 												type="button"
 												className="underline font-semibold flex-shrink-0"

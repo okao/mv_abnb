@@ -75,8 +75,7 @@ const NcModal: FC<NcModalProps> = ({
 							leaveFrom="opacity-100"
 							leaveTo="opacity-0"
 						>
-							{/* <Dialog.Overlay className="fixed inset-0 bg-neutral-900 bg-opacity-50 dark:bg-opacity-80" /> */}
-							<div className="fixed inset-0 bg-black bg-opacity-50 dark:bg-opacity-80" />
+							<Dialog.Overlay className="fixed inset-0 bg-gray-900 bg-opacity-50 dark:bg-opacity-80" />
 						</Transition.Child>
 
 						{/* This element is to trick the browser into centering the modal contents. */}
@@ -96,7 +95,7 @@ const NcModal: FC<NcModalProps> = ({
 							leaveTo="opacity-0 scale-95"
 						>
 							<div
-								className={`inline-block w-full my-5 overflow-hidden text-left align-middle transition-all transform bg-white border border-black border-opacity-5 shadow-xl rounded-2xl sm:my-8 dark:bg-neutral-800 dark:border-neutral-700 text-neutral-900 dark:text-neutral-300 ${contentExtraClass}`}
+								className={`inline-block w-full my-5 overflow-hidden text-left align-middle transition-all transform bg-white border border-black border-opacity-5 shadow-xl rounded-2xl sm:my-8 dark:bg-gray-800 dark:border-neutral-700 text-neutral-900 dark:text-neutral-300 ${contentExtraClass}`}
 							>
 								<div className="py-4 px-6 text-center relative border-b border-neutral-100 dark:border-neutral-700 md:py-5">
 									<ButtonClose
