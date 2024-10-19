@@ -10,7 +10,7 @@ import { getUserById, updateUserById } from '@/services/user';
 import { getTwoFactorConfirmationByUserId } from '@/services/two-factor-confirmation';
 import { isExpired } from '@/lib/utils';
 import { getAccountByUserId } from '@/services/account';
-import { UserRole } from '@prisma/client';
+// import { UserRole } from '@prisma/client';
 
 export const authConfig: NextAuthConfig = {
 	adapter: PrismaAdapter(db),
@@ -40,7 +40,7 @@ export const authConfig: NextAuthConfig = {
 
 			token.name = existingUser.name;
 			token.email = existingUser.email;
-			token.role = existingUser.role;
+			// token.role = existingUser.role;
 			token.isTwoFactorEnabled = existingUser.isTwoFactorEnabled;
 			token.isOAuth = !!existingAccount;
 
@@ -51,9 +51,9 @@ export const authConfig: NextAuthConfig = {
 				session.user.id = token.sub;
 			}
 
-			if (token.role && session.user) {
-				session.user.role = token.role as UserRole;
-			}
+			// if (token.role && session.user) {
+			//   session.user.role = token.role as UserRole;
+			// }
 
 			if (session.user) {
 				session.user.name = token.name;

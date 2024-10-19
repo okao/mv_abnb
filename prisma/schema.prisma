@@ -1,14 +1,365 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
+  // previewFeatures = ["prismaSchemaFolder"]
 }
 
 datasource db {
   provider  = "postgresql"
   url       = env("POSTGRES_PRISMA_URL")
   directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+enum VisibilityStatus {
+  Active
+  Inactive
+  Redacted
+}
+
+enum Currency {
+  USD
+  EUR
+  GBP
+  JPY
+  AUD
+  CAD
+  CHF
+  CNY
+  INR
+  BRL
+  ZAR
+  MXN
+  CLP
+  COP
+  PHP
+  IDR
+  THB
+  MYR
+  SGD
+  HKD
+  NZD
+  SEK
+  NOK
+  DKK
+  PLN
+  CZK
+  HUF
+  RON
+  BGL
+  BGN
+  HRK
+  RUB
+  TRY
+  PEN
+  ARS
+  UYU
+  BZD
+  GTQ
+  HNL
+  NIO
+  BND
+  KHR
+  LAK
+  MMK
+  MVR
+}
+
+enum Language {
+  English
+  Spanish
+  French
+  German
+  Italian
+  Portuguese
+  Dutch
+  Arabic
+  Dhivehi
+}
+
+enum ListingType {
+  Stay
+  Experience
+  Event
+  Activity
+}
+
+enum AddressType {
+  Physical
+  Postal
+}
+
+enum MapType {
+  OpenStreetMap
+  Apple
+  GoogleMaps
+  Mapbox
+  Here
+  Bing
+  Yandex
+  MapKit
+}
+
+//MAldive States
+enum MaldiveState {
+  HaaAlif
+  HaaDhaalu
+  Shaviyani
+  Noonu
+  Raa
+  Baa
+  Lhaviyani
+  Kaafu
+  AlifuAlifu
+  AlifuDhaalu
+  Vaavu
+  Meemu
+  Faafu
+  Dhaalu
+  Thaa
+  Laamu
+  GaafuAlifu
+  GaafuDhaalu
+  Gnaviyani
+  Seenu
+}
+
+//Maldive Cities
+enum MaldiveCity {
+  Male
+  Kulhudhuffushi
+  Addu
+  FoahMulah
+  Thinadhoo
+}
+
+//Maldive Island Types
+enum MaldiveIslandType {
+  Inhabited
+  Uninhabited
+  PartiallyInhabited
+  Resort
+  Industrial
+  Military
+  Picnic
+  Other
+}
+
+model Location {
+  id String @id @default(cuid())
+
+  name String
+  address String?
+  lat String?
+  lng String?
+
+  visibilityStatus VisibilityStatus @default(Active)
+}
+
+enum Rating {
+  One
+  Two
+  Three
+  Four
+  Five
+}
+
+//Listing Approval
+enum ApprovalStatus {
+  Pending
+  Approved
+  Rejected
+  Cancelled
+  Expired
+  Completed
+  UnderReview
+}
+
+enum ReservationStatus {
+  Pending
+  Approved
+  Rejected
+  Cancelled
+  Expired
+  Completed
+  UnderReview
+}
+
+enum ImageType {
+  Listing
+  ListingApplication
+  User
+  ListingRoom
+  ListingRoomToListingReservation
+  ListingToListingReservation
+  ListingReservation
+  ListingReservationByUser
+  ListingReservationLog
+  ListingToAmenity
+  ListingApplicationToAmenity
+  ListingApplicationToLocation
+  ListingApplicationToCategory
+  ListingApplicationToRoom
+  ListingApplicationToBankDetails
+  ListingApplicationChangeLog
+  ListingApplicationApproval
+  Bank
+  BankDetails
+  UserSettings
+  UserBankDetails
+  VerificationToken
+  ResetPasswordToken
+  TwoFactorToken
+  TwoFactorConfirmation
+  Account
+  Ownership
+}
+
+enum ImageOrientation {
+  Landscape
+  Portrait
+  Square
+  Round
+}
+
+enum PropertyType {
+  HOTEL
+  RESORT
+  GUESTHOUSE
+  VILLA
+  APARTMENT
+}
+
+enum RoomType {
+  SINGLE
+  DOUBLE
+  TWIN
+  SUITE
+  VILLA
+}
+
+enum PropertyExposureStatus {
+  ForSale
+  ForRent
+  Sold
+  Rented
+  Other
+}
+
+enum RoomGrade {
+  STANDARD
+  PREMIUM
+  LUXURY
+  BUDGET
+}
+
+enum ExcursionType {
+  ACTIVITY
+  TOUR
+  EVENT
+  CRUISE
+  ADVENTURE
+  WATER_SPORT
+  SIGHTSEEING
+  CULTURAL_EXPERIENCE
+  FOOD_AND_DRINK
+  NATURE_AND_WILDLIFE
+  SHOPPING
+  ENTERTAINMENT
+  SPA_AND_WELLNESS
+  FESTIVAL
+  WORKSHOP
+  OTHER
+}
+
+//Image
+model Image {
+  id String @id @default(cuid())
+
+  //image url
+  url String
+
+  //image type
+  type ImageType?
+
+  //image size
+  size Int?
+
+  //image width
+  width Int?
+
+  //image height
+  height Int?
+
+  //image format
+  format String?
+
+  //image resolution
+  resolution String?
+
+  //image dpi
+  dpi Int?
+
+  //alt text
+  alt String?
+
+  //image caption
+  caption String?
+
+  //image description
+  description String?
+
+  //image orientation
+  orientation ImageOrientation?
+
+  visibilityStatus VisibilityStatus @default(Active)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+
+  siteSettingsLogoToImage SiteSettingsLogoToImage[] @relation("SiteSettingsLogoToImage")
+  propertyImages PropertyImage[] @relation("PropertyImage")
+  roomImages RoomImage[] @relation("RoomImage")
+  excursionImages ExcursionImage[] @relation("ExcursionImage")
+}
+
+enum PaymentMethod {
+  Card
+  BankTransfer
+  Cash
+  Other
+}
+
+enum PaymentStatus {
+  Pending
+  Completed
+  Failed
+  Refunded
+  Other
+}
+
+enum SiteTheme {
+  Light
+  Dark
+  System
+}
+
+model User {
+  id                    String                 @id @default(cuid())
+  name                  String?
+  email                 String?                @unique
+  emailVerified         DateTime?
+  image                 String? // You can use gravatar.com to get image profile
+  password              String?
+  accounts              Account[]
+  isTwoFactorEnabled    Boolean                @default(false)
+  twoFactorConfirmation TwoFactorConfirmation?
+
+  userBankDetails UserBankDetails[] @relation("UserBankDetails")
+  userSettings UserSettings[] @relation("UserSettings")
+  paymentGatewayLogs PaymentGatewayLog[] @relation("PaymentGatewayLog")
+  reviews Review[] @relation("UserReview")
 }
 
 model Account {
@@ -30,23 +381,6 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
-enum UserRole {
-  Admin
-  User
-}
-
-model User {
-  id                    String                 @id @default(cuid())
-  name                  String?
-  email                 String?                @unique
-  emailVerified         DateTime?
-  image                 String? // You can use gravatar.com to get image profile
-  password              String?
-  role                  UserRole               @default(User)
-  accounts              Account[]
-  isTwoFactorEnabled    Boolean                @default(false)
-  twoFactorConfirmation TwoFactorConfirmation?
-}
 
 model VerificationToken {
   id      String   @id @default(cuid())
@@ -81,3 +415,596 @@ model TwoFactorConfirmation {
   expires DateTime
   user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
+
+//User Settings
+model UserSettings {
+  id String @id @default(cuid())
+  userId String
+
+  isNotificationsEnabled Boolean @default(true)
+  isEmailNotificationsEnabled Boolean @default(false)
+  isSmsNotificationsEnabled Boolean @default(false)
+  isTwoFactorEnabled Boolean @default(false)
+  twoFactorSecret String?
+  twoFactorRecoveryCodes String?
+  isEmailVerified Boolean @default(false)
+  isPhoneVerified Boolean @default(false)
+  isAddressVerified Boolean @default(false)
+  isBankDetailsVerified Boolean @default(false)
+
+  visibilityStatus VisibilityStatus @default(Inactive)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, name: "UserSettings")
+}
+
+//Banks
+model Bank {
+  id String @id @default(cuid())
+  name String
+  description String?
+  image String?
+
+  visibilityStatus VisibilityStatus @default(Active)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  bankDetails BankDetails[] @relation("BankDetails")
+}
+
+//BankDetails
+model BankDetails {
+  id String @id @default(cuid())
+
+  accountNumber String
+  accountName String
+  bankAddress String
+  bankId String
+  bank Bank @relation(fields: [bankId], references: [id], onDelete: Cascade, name: "BankDetails")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userBankDetails UserBankDetails[] @relation("UserBankDetails")
+  propertyBankDetails PropertyBankDetails[] @relation("PropertyBankDetails")
+  excursionBankDetails ExcursionBankDetails[] @relation("ExcursionBankDetails")
+}
+
+//User to BankDetails
+model UserBankDetails {
+  id String @id @default(cuid())
+  userId String
+  bankDetailsId String
+
+  visibilityStatus VisibilityStatus @default(Active)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, name: "UserBankDetails")
+  bankDetails BankDetails @relation(fields: [bankDetailsId], references: [id], onDelete: Cascade, name: "UserBankDetails")
+}
+
+//Property to BankDetails
+model PropertyBankDetails {
+  id String @id @default(cuid())
+  propertyId String
+  bankDetailsId String
+
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade, name: "PropertyBankDetails")
+  bankDetails BankDetails @relation(fields: [bankDetailsId], references: [id], onDelete: Cascade, name: "PropertyBankDetails")
+}
+
+//Excursion to BankDetails
+model ExcursionBankDetails {
+  id String @id @default(cuid())
+  excursionId String
+  bankDetailsId String
+
+  excursion Excursion @relation(fields: [excursionId], references: [id], onDelete: Cascade, name: "ExcursionBankDetails")
+  bankDetails BankDetails @relation(fields: [bankDetailsId], references: [id], onDelete: Cascade, name: "ExcursionBankDetails")
+}
+
+// Everything that is related to address , location , geo , etc
+
+model MaldiveIsland {
+  id String @id @default(cuid())
+  name String
+
+  state MaldiveState
+  city MaldiveCity? //City is optional because some islands are just part of a city
+  description String?
+  image String?
+  type MaldiveIslandType @default(Inhabited)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  geoToMaldiveIsland GeoToMaldiveIsland[] @relation("GeoToMaldiveIsland")
+  addressToMaldiveIsland AddressToMaldiveIsland[] @relation("AddressToMaldiveIsland")
+}
+
+model Address {
+  id String @id @default(cuid())
+
+  name String?
+  street String?
+  city String?
+  state String?
+  zip String?
+  country String?
+
+
+  addressType AddressType @default(Physical)
+  addressToGeo AddressToGeo[] @relation("AddressToGeo")
+  addressToMaldiveIsland AddressToMaldiveIsland[] @relation("AddressToMaldiveIsland")
+}
+
+model Geo {
+  id String @id @default(cuid())
+
+  latitude String
+  longitude String
+
+  mapType MapType @default(GoogleMaps)
+  mapUrl String?
+
+  addressToGeo AddressToGeo[] @relation("AddressToGeo")
+  geoToMaldiveIsland GeoToMaldiveIsland[] @relation("GeoToMaldiveIsland")
+  propertyGeo PropertyGeo[] @relation("PropertyGeo")
+  excursionGeo ExcursionGeo[] @relation("ExcursionGeo")
+}
+
+//Address to Geo
+model AddressToGeo {
+  id String @id @default(cuid())
+  addressId String
+  geoId String
+
+  address Address @relation(name: "AddressToGeo", fields: [addressId], references: [id])
+  geo Geo @relation(name: "AddressToGeo", fields: [geoId], references: [id])
+}
+
+//Geo to Maldive Island
+model GeoToMaldiveIsland {
+  id String @id @default(cuid())
+
+  geoId String
+  maldivesIslandId String
+
+  geo Geo @relation(name: "GeoToMaldiveIsland", fields: [geoId], references: [id])
+  maldivesIsland MaldiveIsland @relation(name: "GeoToMaldiveIsland", fields: [maldivesIslandId], references: [id])
+}
+
+//Address to Maldive Island
+model AddressToMaldiveIsland {
+  id String @id @default(cuid())
+
+  addressId String
+  maldivesIslandId String
+
+  address Address @relation(name: "AddressToMaldiveIsland", fields: [addressId], references: [id])
+  maldivesIsland MaldiveIsland @relation(name: "AddressToMaldiveIsland", fields: [maldivesIslandId], references: [id])
+}
+
+model Amenity {
+  id String @id @default(cuid())
+
+  name String
+  description String?
+  icon String?
+  visibilityStatus VisibilityStatus @default(Active)
+
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  roomAmenities RoomAmenity[] @relation("RoomAmenity")
+  propertyAmenities PropertyAmenity[] @relation("PropertyAmenity")
+}
+
+// A property is a property that is for sale or rent
+model Property {
+  id String @id @default(cuid())
+
+  title String
+  description String @db.Text
+  propertyType PropertyType[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  propertyAmenities PropertyAmenity[] @relation("PropertyAmenity")
+  propertyGeo PropertyGeo[] @relation("PropertyGeo")
+  propertyImages PropertyImage[] @relation("PropertyImage")
+  propertyReviews PropertyReview[] @relation("PropertyReview")
+  propertyBankDetails PropertyBankDetails[] @relation("PropertyBankDetails")
+}
+
+// General Excursion
+model Excursion {
+  id String @id @default(cuid())
+
+  title String
+  description String @db.Text
+  type ExcursionType[] @default([])
+  price Float
+  currency Currency @default(MVR)
+  duration String?
+  ageRange String?
+  language Language[] @default([])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  excursionImages ExcursionImage[] @relation("ExcursionImage")
+  excursionGeo ExcursionGeo[] @relation("ExcursionGeo")
+  excursionReviews ExcursionReview[] @relation("ExcursionReview")
+  excursionBankDetails ExcursionBankDetails[] @relation("ExcursionBankDetails")
+}
+
+model Room {
+  id String @id @default(cuid())
+
+  title String
+  description String @db.Text
+  roomType RoomType @default(SINGLE)
+  capacity Int @default(2)
+  pricePerNight Float @default(100.00)
+  roomGrade RoomGrade @default(STANDARD)
+  roomSize String?
+  roomView String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  roomAmenities RoomAmenity[] @relation("RoomAmenity")
+  roomImages RoomImage[] @relation("RoomImage")
+}
+
+//Room to Amenities
+model RoomAmenity {
+  id String @id @default(cuid())
+
+  roomId String
+  amenityId String
+
+  room Room @relation(name: "RoomAmenity", fields: [roomId], references: [id])
+  amenity Amenity @relation(name: "RoomAmenity", fields: [amenityId], references: [id])
+}
+
+//Property to Amenities
+model PropertyAmenity {
+  id String @id @default(cuid())
+
+  propertyId String
+  amenityId String
+
+  property Property @relation(name: "PropertyAmenity", fields: [propertyId], references: [id])
+  amenity Amenity @relation(name: "PropertyAmenity", fields: [amenityId], references: [id])
+}
+
+//Property to Geo
+model PropertyGeo {
+  id String @id @default(cuid())
+
+  propertyId String
+  geoId String
+
+  property Property @relation(name: "PropertyGeo", fields: [propertyId], references: [id])
+  geo Geo @relation(name: "PropertyGeo", fields: [geoId], references: [id])
+}
+
+//Property to Images
+model PropertyImage {
+  id String @id @default(cuid())
+
+  propertyId String
+  imageId String
+
+  property Property @relation(name: "PropertyImage", fields: [propertyId], references: [id])
+  image Image @relation(name: "PropertyImage", fields: [imageId], references: [id])
+}
+
+//Room to Images
+model RoomImage {
+  id String @id @default(cuid())
+
+  roomId String
+  imageId String
+
+  room Room @relation(name: "RoomImage", fields: [roomId], references: [id])
+  image Image @relation(name: "RoomImage", fields: [imageId], references: [id])
+}
+
+//Excursion to Images
+model ExcursionImage {
+  id String @id @default(cuid())
+
+  excursionId String
+  imageId String
+
+  excursion Excursion @relation(name: "ExcursionImage", fields: [excursionId], references: [id])
+  image Image @relation(name: "ExcursionImage", fields: [imageId], references: [id])
+}
+
+//Excursion to Geo
+model ExcursionGeo {
+  id String @id @default(cuid())
+
+  excursionId String
+  geoId String
+
+  excursion Excursion @relation(name: "ExcursionGeo", fields: [excursionId], references: [id])
+  geo Geo @relation(name: "ExcursionGeo", fields: [geoId], references: [id])
+}
+
+//Property to Reviews
+model PropertyReview {
+  id String @id @default(cuid())
+
+  propertyId String
+  reviewId String
+
+  property Property @relation(name: "PropertyReview", fields: [propertyId], references: [id])
+  review Review @relation(name: "PropertyReview", fields: [reviewId], references: [id])
+}
+
+//Excursion to Reviews
+model ExcursionReview {
+  id String @id @default(cuid())
+
+  excursionId String
+  reviewId String
+
+  excursion Excursion @relation(name: "ExcursionReview", fields: [excursionId], references: [id])
+  review Review @relation(name: "ExcursionReview", fields: [reviewId], references: [id])
+}
+
+model Review {
+  id String @id @default(cuid())
+
+  rating Rating
+  comment String?
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, name: "UserReview")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  propertyReview PropertyReview[] @relation("PropertyReview")
+  excursionReview ExcursionReview[] @relation("ExcursionReview")
+}
+
+//Site Settings
+model SiteSettings {
+  id String @id @default(cuid())
+
+  siteName String?
+  siteDescription String?
+  siteTheme SiteTheme? @default(Light)
+
+  siteDefaultCurrency String?
+  siteDefaultLanguage String?
+  siteDefaultTimezone String?
+
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  siteSettingsLogoToImage SiteSettingsLogoToImage[] @relation("SiteSettingsLogoToImage")
+  siteSettingsSocialMedia SiteSettingsSocialMedia[] @relation("SiteSettingsSocialMedia")
+  siteSettingsContact SiteSettingsContact[] @relation("SiteSettingsContact")
+  siteSettingsAbout SiteSettingsAbout[] @relation("SiteSettingsAbout")
+  siteSettingsPrivacyPolicy SiteSettingsPrivacyPolicy[] @relation("SiteSettingsPrivacyPolicy")
+  siteSettingsTermsAndConditions SiteSettingsTermsAndConditions[] @relation("SiteSettingsTermsAndConditions")
+  siteSettingsRefundPolicy SiteSettingsRefundPolicy[] @relation("SiteSettingsRefundPolicy")
+  siteSettingsCookiePolicy SiteSettingsCookiePolicy[] @relation("SiteSettingsCookiePolicy")
+  paymentGatewayToSiteSettings PaymentGatewayToSiteSettings[] @relation("PaymentGatewayToSiteSettings")
+}
+
+//Site Settings Logo To Image
+model SiteSettingsLogoToImage {
+  id String @id @default(cuid())
+
+  siteSettingsId String
+  siteSettings SiteSettings @relation(fields: [siteSettingsId], references: [id], onDelete: Cascade, name: "SiteSettingsLogoToImage")
+
+  imageId String
+  image Image @relation(fields: [imageId], references: [id], onDelete: Cascade, name: "SiteSettingsLogoToImage")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum SocialMediaType {
+  Facebook
+  Twitter
+  Instagram
+  Linkedin
+  Youtube
+  Tiktok
+  Whatsapp
+  Telegram
+  X
+}
+
+//Site Settings Social Media
+model SiteSettingsSocialMedia {
+  id String @id @default(cuid())
+
+  siteSettingsId String
+  siteSettings SiteSettings @relation(fields: [siteSettingsId], references: [id], onDelete: Cascade, name: "SiteSettingsSocialMedia")
+
+  type SocialMediaType
+  name String
+  url String
+
+  visibilityStatus VisibilityStatus @default(Active)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//Site Settings Contact
+model SiteSettingsContact {
+  id String @id @default(cuid())
+
+  siteSettingsId String
+  siteSettings SiteSettings @relation(fields: [siteSettingsId], references: [id], onDelete: Cascade, name: "SiteSettingsContact")
+
+  email String?
+  phone String?
+  address String?
+  city String?
+  state String?
+  zip String?
+  country String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//Site Settings About
+model SiteSettingsAbout {
+  id String @id @default(cuid())
+
+  title String @db.Text
+  description String @db.Text
+
+  visibilityStatus VisibilityStatus @default(Active)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  siteSettingsId String
+  siteSettings SiteSettings @relation(fields: [siteSettingsId], references: [id], onDelete: Cascade, name: "SiteSettingsAbout")
+}
+
+//Site Settings Privacy Policy
+model SiteSettingsPrivacyPolicy {
+  id String @id @default(cuid())
+
+  title String @db.Text
+  description String @db.Text
+
+  visibilityStatus VisibilityStatus @default(Active)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  siteSettingsId String
+  siteSettings SiteSettings @relation(fields: [siteSettingsId], references: [id], onDelete: Cascade, name: "SiteSettingsPrivacyPolicy")
+
+}
+
+//Site Settings Terms and Conditions
+model SiteSettingsTermsAndConditions {
+  id String @id @default(cuid())
+
+  title String @db.Text
+  description String @db.Text
+
+  visibilityStatus VisibilityStatus @default(Active)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  siteSettingsId String
+  siteSettings SiteSettings @relation(fields: [siteSettingsId], references: [id], onDelete: Cascade, name: "SiteSettingsTermsAndConditions")
+
+}
+
+//Site Settings Refund Policy
+model SiteSettingsRefundPolicy {
+  id String @id @default(cuid())
+
+  title String @db.Text
+  description String @db.Text
+
+  visibilityStatus VisibilityStatus @default(Active)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  siteSettingsId String
+  siteSettings SiteSettings @relation(fields: [siteSettingsId], references: [id], onDelete: Cascade, name: "SiteSettingsRefundPolicy")
+}
+
+model SiteSettingsCookiePolicy {
+  id String @id @default(cuid())
+
+  title String @db.Text
+  description String @db.Text
+
+  visibilityStatus VisibilityStatus @default(Active)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  siteSettingsId String
+  siteSettings SiteSettings @relation(fields: [siteSettingsId], references: [id], onDelete: Cascade, name: "SiteSettingsCookiePolicy")
+}
+
+//Payment Gateways
+model PaymentGateway {
+  id String @id @default(cuid())
+
+  name String
+  description String @db.Text
+  apiKey String
+  apiSecret String
+  apiUrl String
+  apiVersion String @default("v1")
+  apiDocumentationUrl String?
+
+  isActive Boolean @default(false)
+  isDefault Boolean @default(false)
+
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  paymentGatewayToSiteSettings PaymentGatewayToSiteSettings[] @relation("PaymentGatewayToSiteSettings")
+  paymentGatewayLogs PaymentGatewayLog[] @relation("PaymentGatewayLog")
+}
+
+//Payment Gateway to Site Settings
+model PaymentGatewayToSiteSettings {
+  id String @id @default(cuid())
+
+  paymentGatewayId String
+  paymentGateway PaymentGateway @relation(fields: [paymentGatewayId], references: [id], onDelete: Cascade, name: "PaymentGatewayToSiteSettings")
+
+  //visibility status
+  visibilityStatus VisibilityStatus @default(Active)
+
+  siteSettingsId String
+  siteSettings SiteSettings @relation(fields: [siteSettingsId], references: [id], onDelete: Cascade, name: "PaymentGatewayToSiteSettings")
+}
+
+//Payment Gateway Logs
+model PaymentGatewayLog {
+  id String @id @default(cuid())
+
+  paymentGatewayId String
+  paymentGateway PaymentGateway @relation(fields: [paymentGatewayId], references: [id], onDelete: Cascade, name: "PaymentGatewayLog")
+
+  log String @db.Text
+
+  //user who made the log
+  userId String?
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade, name: "PaymentGatewayLog")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+
+
+
+
+
+
+
+
+

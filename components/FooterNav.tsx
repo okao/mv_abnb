@@ -2,6 +2,7 @@
 
 import {
 	HeartIcon,
+	HomeIcon,
 	MagnifyingGlassIcon,
 	UserCircleIcon,
 } from '@heroicons/react/24/outline';
@@ -25,9 +26,9 @@ interface NavItem {
 
 const NAV: NavItem[] = [
 	{
-		name: 'Explore',
+		name: 'Home',
 		link: '/',
-		icon: MagnifyingGlassIcon,
+		icon: HomeIcon,
 	},
 	{
 		name: 'Wishlists',

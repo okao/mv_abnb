@@ -56,8 +56,12 @@ const config = {
 				// 	foreground: 'hsl(var(--primary-foreground))',
 				// },
 				primary: {
-					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))',
+					// DEFAULT: 'hsl(var(--primary))',
+					// foreground: 'hsl(var(--primary-foreground))',
+					DEFAULT: customColors('--c-primary-500')({
+						opacityVariable: '',
+						opacityValue: undefined,
+					}),
 					50: customColors('--c-primary-50')({
 						opacityVariable: '',
 						opacityValue: undefined,
@@ -97,6 +101,15 @@ const config = {
 					900: customColors('--c-primary-900')({
 						opacityVariable: '',
 						opacityValue: undefined,
+					}),
+					// Add custom opacity variants
+					'500/20': customColors('--c-primary-500')({
+						opacityVariable: '',
+						opacityValue: 0.2,
+					}),
+					'600/70': customColors('--c-primary-600')({
+						opacityVariable: '',
+						opacityValue: 0.7,
 					}),
 				},
 				// secondary: {

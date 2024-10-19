@@ -14,14 +14,19 @@
     "lint": "next lint",
     "prisma:update": "npx prisma generate && npx prisma db push",
     "prisma:clean": "npx prisma generate && npx prisma migrate reset && npx prisma db push",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "prisma:migrate": "npx prisma migrate dev --name dev",
+    "prisma:migrate:prod": "npx prisma migrate deploy --schema=./prisma/schema.prisma",
+    "prisma:squash": "npx prisma migrate dev --name squashed_migrations",
+    "prisma:reset": "npx prisma migrate reset"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^1.0.14",
+    "@descope/nextjs-sdk": "^0.3.0",
     "@headlessui/react": "^1.7.14",
     "@heroicons/react": "^2.1.5",
     "@hookform/resolvers": "^3.3.4",
-    "@prisma/client": "^5.7.1",
+    "@prisma/client": "^5.15.0",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-label": "^2.0.2",
@@ -69,7 +74,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "postcss": "^8",
-    "prisma": "^5.7.1",
+    "prisma": "^5.15.0",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }
